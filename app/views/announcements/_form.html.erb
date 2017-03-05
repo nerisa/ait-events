@@ -1,0 +1,6 @@
+<%= form_for([@event, @announcement], remote: true, html: {class: "form-inline announcement-form"}) do |af| %>
+  <div class="form-group">
+    <%= af.text_field :description, {:class => "comment-field form-control", :required => true, placeholder: "Have announcements?"} %>
+    <%= af.submit 'Post',:class => 'btn btn-primary' %>
+  </div>
+<% end %>

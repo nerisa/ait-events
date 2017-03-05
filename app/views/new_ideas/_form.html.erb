@@ -1,0 +1,20 @@
+<span class="text-info">Do you have any new ideas?</span>
+<%= form_for(@new_idea, remote:true) do |f| %>
+  <div class = "form-group">
+    <%= f.label :name, 'What would you name this event?' %>
+    <%= f.text_field :name, {:class => "form-control", :required => true} %>
+  </div>
+
+  <div class = "form-group">
+    <%= f.label :description, 'Please describe this event for us' %>
+    <%= f.text_area :description, {:class => "form-control", :required => true} %>
+  </div>
+
+  <div class = "form-group">
+    <%= f.label :committee_id, 'Which SU committee would this event fall under?' %>
+    <%= f.collection_select :committee_id, Committee.all, :id, :name,{prompt: 'Please select a committee'}, {required: 'true', class: 'form-control'} %>
+  </div>
+
+  <%= f.submit 'Submit',:class => 'btn btn-primary' %>
+
+<% end %>

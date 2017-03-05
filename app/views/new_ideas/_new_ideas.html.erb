@@ -1,0 +1,30 @@
+<% @ideaList.each do |new_idea| %>
+  <div class="idea-block">
+    <div class="event-details">
+      <div class="event-heading">
+        <% if can? :show, NewIdea %>
+          <span class="event-name"><%= link_to "#{new_idea.name}", new_idea_path(new_idea) %></span>
+        <% else %>
+            <span class="event-name"><%= link_to "#{new_idea.name}", new_idea_comments_path(new_idea) %></span>
+        <% end %>
+        <span class="committee-name"><%= new_idea.committee.name %></span>
+      </div>
+      <p><%= new_idea.description %></p>
+      <p class="text-right user-name"><%= new_idea.user.username %></p>
+    </div>
+    <div class="comment-block">
+      <% new_idea.comments.limit(5).each do |comment| %>
+          <div class="comment-details">
+            <p><span class="user-name"><%= comment.user.username %></span> <%= comment.description %></p><p class="comment-time text-right"><%= time_ago_in_words(comment.created_at) %></p>
+          </div>
+      <% end %>
+      <% if new_idea.comments.count > 5 %>
+        <% if can? :show, NewIdea %>
+            <%= link_to "Show all comments", new_idea_path(new_idea) %>
+        <% else %>
+            <%= link_to "Show all comments", new_idea_comments_path(new_idea) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

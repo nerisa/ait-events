@@ -1,0 +1,12 @@
+<% if @announcement.errors.any? %>
+$("#errorMsg").html("<%= escape_javascript(@errorMsg)%>");
+$("#errorMsg").show(1000);
+<% else -%>
+$("#errorMsg").hide();
+$(":input:not(input[type=submit])").val("");
+$("#announcementList").prepend("<%= escape_javascript( render(partial: "announcements/announcement", locals: {announcement: @announcement } ) ) %>").hide().slideDown("slow");
+<% end -%>
+
+
+
+

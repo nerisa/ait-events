@@ -1,0 +1,5 @@
+committee_1:
+  id: 1
+  name: 'Committee 1'
+  description: 'This is a committee'
+  user_id: 2

@@ -1,0 +1,15 @@
+<% if @comment.errors.any? %>
+$("#successMsg").hide(1000);
+$("#errorMsg").html("<%= escape_javascript(@errorMsg)%>");
+$("#errorMsg").show(1000);
+<% else -%>
+$("#errorMsg").hide();
+$("#successMsg").html("<%= escape_javascript(@msg)%>");
+$("#successMsg").show(1000);
+$(":input:not(input[type=submit])").val("");
+$("#commentsList").prepend("<%= escape_javascript( render(partial: "comment", locals: {comment: @comment, idea: @idea } ) ) %>").hide().slideDown("slow");
+<% end -%>
+
+
+
+

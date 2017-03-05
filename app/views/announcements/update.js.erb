@@ -1,0 +1,3 @@
+var announcementBlockId = "#announcementDetail_" + <%= @announcement.id %>;
+$(announcementBlockId).replaceWith("<%= escape_javascript( render(partial: "announcements/announcement", locals: {announcement: @announcement } ) ) %>");
+$(announcementBlockId).hide().slideDown("slow");

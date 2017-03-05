@@ -1,0 +1,3 @@
+var commentBlockId = "#commentDetails_" + <%= @comment.id %>;
+$(commentBlockId).replaceWith("<%= escape_javascript( render(partial: "comments/comment", locals: {comment: @comment, idea: @idea } ) ) %>");
+$(commentBlockId).hide().slideDown("slow");

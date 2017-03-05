@@ -1,0 +1,34 @@
+<ul class="nav navbar-nav">
+  <li class="<%= 'active' if current_page?(home_index_path) %>"><%= link_to "Home", home_index_path %></li>
+  <% if current_user.is_super_admin? %>
+      <li class="<%= 'active' if current_page?(users_index_path) %>"><%= link_to "Dashboard", users_index_path %></li>
+  <% else %>
+      <li class="<%= 'active' if current_page?(new_ideas_path) %>"><%= link_to "My Dashboard", new_ideas_path %></li>
+  <% end %>
+  <li class="<%= 'active' if current_page?(events_path) %>"><%= link_to "All Events", events_path %></li>
+  <% if (can? :index, Comment) && current_user.is_member? %>
+      <% if !NewIdea.where("restrict_display = false AND is_closed = false").nil? %>
+          <li class="<%= 'active' if current_page?(new_idea_comments_path(NewIdea.where("restrict_display = false AND is_closed = false").first)) %>"><%= link_to "New Ideas", new_idea_comments_path(NewIdea.where("restrict_display = false AND is_closed = false").first) %></li>
+      <% end %>
+  <% end %>
+  <% if can? :show_banned_users, User %>
+      <li class="<%= 'active' if current_page?(users_show_banned_users_path) %>"><%= link_to "Banned Users", users_show_banned_users_path %></li>
+  <% end %>
+  <% if can? :show, NewIdea %>
+      <% if NewIdea.where("restrict_display = false AND is_closed = false").nil? %>
+          <% if !NewIdea.last.nil? %>
+            <li class="<%= 'active' if current_page?(new_idea_path(NewIdea.last)) %>"><%= link_to "New Ideas", new_idea_path(NewIdea.last) %></li>
+          <% end %>
+      <% else %>
+        <li class="<%= 'active' if current_page?(new_idea_path(NewIdea.where("restrict_display = false AND is_closed = false").last)) %>"><%= link_to "New Ideas", new_idea_path(NewIdea.where("restrict_display = false AND is_closed = false").last) %></li>
+      <% end %>
+  <% end %>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SU Committees <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% Committee.all.each do |committee| %>
+        <li><%= link_to committee.name, committee_path(committee) %></li>
+      <% end %>
+    </ul>
+  </li>
+</ul>

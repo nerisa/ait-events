@@ -1,0 +1,185 @@
+<h2>PS5 Solutions - Content Management Part I</h2>
+
+<div class="answer-block">
+  <p>We have the following content in our application</p>
+  <ul>
+    <li>New Ideas</li>
+    <li>Comments on New Ideas</li>
+    <li>Events</li>
+    <li>Comments on Events</li>
+  </ul>
+</div>
+
+<div class="answer-block">
+  <h3>New Ideas</h3>
+  <p>Members can submit ideas for new events. Users need to specify the name of the event, which SU Committee the event falls under and a short description of the event.</p>
+  <p>Other members can view the ideas submitted by other users. They can also comment on the event.</p>
+  <p>The admin has the ability of closing the discussion if it has been put into action or even restrict its display if it found to be irrelevant or offensive.</p>
+  <h4>Schema:</h4>
+  <div class="schema-block">
+    <pre>Create table new_ideas(
+        id  			integer,
+        name 			varchar(100),
+        is_closed 		boolean,
+        created_at		datetime,
+        author			varchar(100),
+        updated_at 		datetime,
+        restrict_display 	boolean,
+        description		varchar(200)
+    );</pre>
+  </div>
+  <div class="schema-block">
+    <pre>Create table new_idea_comments(
+      id 			integer,
+      author			varchar(100),
+      description 		varchar(200),
+      restrict_display 	boolean,
+      updated_at 		datetime,
+      created_at		datetime
+    );</pre>
+  </div>
+</div>
+
+<div class="answer-block">
+  <h3>Events</h3>
+  <p>The master_admin i.e. the chairperson of each SU Committee can create events. The chairperson can also post announcements for the event.</p>
+  <p>Users can view the events,volunteer in the events, and post comments.</p>
+  <h4>Schema:</h4>
+  <div class="schema-block">
+    <pre>Create table events(
+      name			varchar(100),
+      venue 			varchar(100),
+      description 		varchar(200),
+      start_date		not null date,
+      end_date		not null date,
+      author 			references users,
+      volunteers  		references users
+      );</pre>
+  </div>
+  <div class="schema-block">
+    <pre>Create table event_announcements(
+      created_at  		datetime,
+      updated_at		datetime,
+      description		varchar(200)
+    );</pre>
+  </div>
+  <div class="schema-block">
+    <pre>Create table event_comments(
+      created_at		datetime,
+      updated_at		datetime,
+      id 			int,
+      author 			varchar(100),
+      restrict_display  	boolean,
+      description  		varchar(200)
+    );</pre>
+  </div>
+</div>
+
+<div class="answer-block">
+  <h3>Relationship between content</h3>
+  <%= image_tag("er_ps5.png") %>
+</div>
+
+<div class="answer-block workflow">
+  <h3>Workflow</h3>
+  <div class="schema-block">
+    <ul>
+      <li>Log in as a Super_admin or Master_admin using valid credentials and then visit events in the main menu.</li>
+      <li>Create a new event for a particular committee.</li>
+      <li>Create a new_ideas page.</li>
+      <li>Create a volunteer option for the event.</li>
+      <li>Log out.</li>
+    </ul>
+    <ul>
+      <li>Log in as a  member and view the events from a particular committee.</li>
+      <li>Should be able to comment on the events.</li>
+      <li>Should be able to volunteer for the event.</li>
+      <li>Should be able to have a calendar view of all the events</li>
+      <li>Add ideas to the new_ideas page.</li>
+      <li>Comment on already existing ideas.</li>
+      <li>Choose to volunteer for the event.</li>
+      <li>Log out.</li>
+    </ul>
+    <ul>
+      <li>Log in as a Super_admin</li>
+      <li>Modify any content about the event if necessary.</li>
+      <li>Should send out notifications about the events to the members</li>
+      <li>Approve the new_ideas submitted by the users.</li>
+      <li>Approve the comments by other users on the submitted ideas.</li>
+      <li>May choose to ban users for any violations.</li>
+      <li>May choose the block the new-idea to prevent negativity in the comments section.</li>
+      <li>Log out.</li>
+    </ul>
+    <ul>
+      <li>Log in as member</li>
+      <li>Might be banned by the Super_admin for violations.</li>
+      <li>Might have his comment rejected by the Super_admin.</li>
+      <li>If approved his comment should be visible under the new_ideas</li>
+      <li>Log out.</li>
+    </ul>
+    <ul>
+      <li>Login as the Super_admin</li>
+      <li>Choose when the new_idea has to be closed.</li>
+      <li>Choose when the event has to be closed.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="answer-block">
+  <%= image_tag("ps5_workflow.png") %>
+</div>
+
+<div class="answer-block">
+  <h3>Versioning</h3>
+  <p>Since our content are events, new_ideas and comments, we do not need to store the previous versions of the content after users edit them. But we have created_at and updated_at fields in each of the content to know when the contents were created and edited.</p>
+</div>
+
+<div class="answer-block">
+  <h3>Project Page and Account</h3>
+  <p>To access the admin pages please login using the google account: <span class="te">mdailey@ait.asia</span></p>
+  <p><strong>P.S. The Google login does not work in Firefox. We are trying to resolve the issue as soon as possible.</strong></p>
+</div>
+
+
+
+
+<style>
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .answer-block{
+    margin: 30px 0;
+    padding-bottom: 20px;
+  }
+
+  p{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .answer-block p, .answer-block {
+    font-size: 15px !important;
+  }
+
+  ul{
+    margin: 5px 10px;
+    font-size: 15px !important;
+  }
+
+  .schema-block{
+    margin-bottom: 20px;
+    width: 500px;
+  }
+
+  .schema-block pre{
+    font-size: 14px;
+  }
+
+  .workflow ul{
+    list-style: decimal;
+  }
+</style>

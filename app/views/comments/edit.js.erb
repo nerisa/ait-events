@@ -1,0 +1,2 @@
+var commentBlockId = "#commentDetails_" + <%= @comment.id %>;
+$(commentBlockId).html("<%= escape_javascript( render(partial: "comments/form", locals: {comment: @comment } ) ) %>");

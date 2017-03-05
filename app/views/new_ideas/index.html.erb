@@ -1,0 +1,58 @@
+<div class="col-md-8">
+  <h1><%= current_user.username %>'s Dashboard</h1>
+  <div class="upcoming-events">
+    <p class="title">
+      <span class="text-right glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+      Your Upcoming Events
+    </p>
+    <% if !@upcoming_volunteers.empty? %>
+        <% @upcoming_volunteers.each do |volunteer| %>
+            <div class="event-details">
+              <h4><%= link_to "#{volunteer.event.name}", event_path(volunteer.event) %></h4>
+              <p class="event-time">
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                <%= distance_of_time_in_words_to_now(volunteer.event.start_date) %> remaining
+              </p>
+            </div>
+        <% end %>
+    <% else %>
+        <div class="event-details">
+          <p>You donot have any upcoming events to volunteer in.</p>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="upcoming-events">
+    <p class="title">
+      <span class="text-right glyphicon glyphicon-calendar" aria-hidden="true"></span>
+      Other Upcoming Events
+    </p>
+    <% if !@upcoming_events.empty? %>
+        <% @upcoming_events.each do |event| %>
+            <div class="event-details">
+              <h4><%= link_to "#{event.name}", event_path(event) %></h4>
+              <p class="event-time">
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                <%= distance_of_time_in_words_to_now(event.start_date) %> remaining
+              </p>
+            </div>
+        <% end %>
+    <% else %>
+        <div class="event-details">
+          <p>No upcoming events</p>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="idea-form">
+    <p class="bg-success text-success" id="successMsg" style="display:none"></p>
+    <p class="bg-danger text-danger" id="errorMsg" style="display:none"></p>
+    <%= render partial: 'form' %>
+  </div>
+  <h2>New Ideas!!</h2>
+  <div class="ideas-list">
+    <%= render partial: 'new_ideas' %>
+  </div>
+</div>

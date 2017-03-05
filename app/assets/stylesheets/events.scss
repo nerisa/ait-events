@@ -1,0 +1,131 @@
+.event-container{
+  background: #E9EBEE;
+  margin: 0 15px;
+}
+
+.event-heading{
+  padding: 10px 20px;
+  background-color: #FFFFFF;
+  margin: 20px 0px;
+  border-radius: 15px;
+}
+.event-time{
+  border-bottom: 1px solid #E9EBEE;
+}
+.event-title {
+  border-bottom: 1px solid #e1e3e6;
+  font-size: 20px;
+}
+
+.details{
+  background: #FFFFFF;
+  padding: 10px 10px 1px 10px;
+  margin-bottom: 20px;
+}
+
+.announcement-block{
+  padding-bottom: 20px;
+}
+
+.announcement-details {
+  border-bottom: #d7d7d7 solid 1px;
+  margin: 20px 0;
+  padding-bottom: 2px;
+}
+
+.announcement-details p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.announcement-time{
+  font-size: 12px !important;
+  color:#7C7C7C;
+}
+
+.announcement-form{
+  margin-bottom: 10px;
+}
+
+.announcement-form, .announcement-form .form-group{
+  width: 100%;
+}
+
+.announcement-form input[type=text]{
+  width: 90%;
+}
+
+.details .glyphicon{
+  margin-right: 5px;
+}
+
+.event-date .form-group{
+  width: 45%;
+}
+
+.start-date{
+  float: left;
+}
+
+.end-date{
+  float: right;
+}
+
+.announcement-details .announcement-form{
+  margin-top: 30px;
+}
+.volunteer-block, .comment-block{
+  margin-top: 20px;
+}
+.volunteer-list{
+  list-style: none;
+  padding: 0;
+}
+
+.committee-events {
+  padding: 5px 10px 10px;
+  background: #F8F8F8;
+  margin-bottom: 30px;
+}
+
+.committee-events h2 {
+  margin-top: 10px;
+  color: #2E2F30;
+}
+
+.committee-events a:hover{
+  text-decoration: none;
+}
+
+.committee-events ul, .committee-events p {
+  background: white;
+  list-style: none;
+  padding-left: 5px;
+}
+
+.committee-events p{
+  padding: 20px 5px;
+}
+
+.committee-events li {
+  padding: 5px 0px;
+  font-size: 18px;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.committee-events li:last-child {
+  border-bottom: none;
+}
+
+.event-header h1{
+  float: left;
+}
+
+.event-header a{
+  float:right;
+}
+
+.event-form {
+  background: #F8F8F8;
+  padding-bottom: 20px;
+}

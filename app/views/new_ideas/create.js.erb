@@ -1,0 +1,15 @@
+<% if @new_idea.errors.any? %>
+  $("#successMsg").hide(1000);
+  $("#errorMsg").html("<%= escape_javascript(@errorMsg)%>");
+  $("#errorMsg").show(1000);
+<% else -%>
+  $("#errorMsg").hide();
+  $("#successMsg").html("<%= escape_javascript(@msg)%>");
+  $("#successMsg").show(1000);
+  $(":input:not(input[type=submit])").val("");
+  $(".ideas-list").html("<%= escape_javascript( render(:partial => "new_ideas") ) %>");
+<% end -%>
+
+
+
+

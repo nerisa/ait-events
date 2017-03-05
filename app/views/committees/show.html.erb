@@ -1,0 +1,58 @@
+<div class="col-md-8">
+  <div class="commitee-header clearfix">
+    <h2><%= @committee.name %></h2>
+    <% if !current_user.nil? %>
+      <% if @committee.user == current_user || current_user.is_super_admin %>
+          <%= link_to "Create an Event", new_event_path, class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="details">
+    <p><%= @committee.description %></p>
+  </div>
+  <p>Chairperson: <%= @committee.user.username %></p>
+  <div class="upcoming-events">
+    <p class="title"><span class="text-right glyphicon glyphicon-calendar" aria-hidden="true"></span> Upcoming Event
+    </p>
+    <div class="event-details">
+      <% if (!@upcoming_event.nil?) %>
+          <h4><%= link_to "#{@upcoming_event.name}", event_path(@upcoming_event) %></h4>
+          <p class="event-time">
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            <%= distance_of_time_in_words_to_now(@upcoming_event.start_date) %> remaining
+          </p>
+      <% else %>
+          <p>No upcoming events!!</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col-md-4 side-block">
+  <div class="members-list">
+    <h4>Committee Members</h4>
+    <ul>
+      <li>Comittee Member 1</li>
+      <li>Comittee Member 2</li>
+      <li>Comittee Member 3</li>
+      <li>Comittee Member 4</li>
+      <li>Comittee Member 5</li>
+      <li>Comittee Member 6</li>
+      <li>Comittee Member 7</li>
+      <li>Comittee Member 8</li>
+      <li>Comittee Member 9</li>
+      <li>Comittee Member 10</li>
+    </ul>
+  </div>
+  <div class="events-list">
+    <h4>Events</h4>
+    <% if !@events.nil? %>
+        <ul>
+          <% @events.each do |event| %>
+              <li><%= link_to "#{event.name}", event_path(event) %></li>
+          <% end %>
+        </ul>
+    <% else %>
+        This committee has not organized any events yet.
+    <% end %>
+  </div>
+</div>

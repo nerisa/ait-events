@@ -1,0 +1,2 @@
+var announcementBlockId = "#announcementDetail_" + <%= @announcement.id %>;
+$(announcementBlockId).html("<%= escape_javascript( render(partial: "announcements/form", locals: {announcement: @announcement } ) ) %>");

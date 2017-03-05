@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AitEvents</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag params[:controller] %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+<div class="container">
+  <% if current_user %>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <%= link_to home_index_path, class:'navbar-brand logo-wrapper' do %>
+              <%= image_tag("logo.png", height:'30') %>
+          <% end %>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <%= render partial: "/menu" %>
+            <p class="navbar-text navbar-right">Signed in as <strong><%= current_user.name %></strong>
+              | <%= link_to "Sign out", signout_path, id: "sign_out" %> </p>
+          </div><!-- /.container-fluid -->
+        </div>
+      </nav>
+  <% else %>
+      <div>
+      <button type="button" class="btn google-btn"><%= link_to "Sign in", login_path, id: "sign_in"%></button>
+      </div>
+  <% end %>
+  <div class="row">
+    <% if flash[:error] %>
+        <p class="msgs bg-danger text-danger">
+          <%= flash[:error] %>
+        </p>
+    <% end %>
+
+    <% if flash[:message] %>
+        <p class="msgs bg-info text-info">
+          <%= flash[:message] %>
+        </p>
+    <% end %>
+
+    <% if flash[:alert] %>
+        <p class="msgs bg-warning text-warning">
+          <%= flash[:alert] %>
+        </p>
+    <% end %>
+    <% if current_user.nil? %>
+      <%= link_to home_index_path do%>
+        <%= image_tag("logo.png") %>
+      <% end %>
+    <% end %>
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>

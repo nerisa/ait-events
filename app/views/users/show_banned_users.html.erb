@@ -1,0 +1,26 @@
+<h1>Admin Page</h1>
+
+<div>
+  <h2>Banned Users</h2>
+  <span>Total users: <%= @users.count %></span>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Registered Date</th>
+      <th>Last logged in</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.name %></td>
+          <td><%= user.created_at %></td>
+          <td><%= user.updated_at %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

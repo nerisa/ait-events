@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+event_1:
+  id: 1
+  name: 'Event 1'
+  description: 'Test Event'
+  venue: 'AITCC'
+  start_date: 2016-11-12
+  end_date: 2016-11-12
+  committee_id: 1
+
+event_2:
+  id: 2
+  name: 'Event 2'
+  description: 'Test Event 2'
+  venue: 'AITCC'
+  start_date: 2016-11-12
+  end_date: 2016-11-12
+  committee_id: 1

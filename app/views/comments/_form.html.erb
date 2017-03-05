@@ -1,0 +1,9 @@
+<%= form_for([@idea, @comment], remote: true, html: {class: "form-inline"}) do |f| %>
+  <div class = "form-group">
+    <span class="user-name"><%= current_user.username %></span>
+    <%= f.text_field :description, {:class => "comment-field form-control", :required => true, placeholder: "Write a comment..."} %>
+    <%= f.submit 'Comment',:class => 'btn btn-primary' %>
+  </div>
+
+<% end %>
+

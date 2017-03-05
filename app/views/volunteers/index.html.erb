@@ -1,0 +1,25 @@
+<div>
+  <h2>Volunteers for <%= @event.name %></h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>User</th>
+      <th>Requested Date</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @volunteers.each do |volunteer| %>
+        <tr>
+          <td><%= volunteer.user.username %></td>
+          <td><%= volunteer.created_at.to_date %></td>
+          <% if volunteer.is_approved? %>
+            <td><%= link_to 'Remove from Volunteers', event_reject_volunteer_path(@event, volunteer) %></td>
+          <% else %>
+            <td><%= link_to 'Accept', event_accept_volunteer_path(@event, volunteer) %></td>
+          <% end %>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

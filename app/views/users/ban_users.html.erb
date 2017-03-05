@@ -1,0 +1,30 @@
+<h1>Restrict Access to Users</h1>
+
+<div>
+<h2>Users</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Registered Date</th>
+    <th>Last logged in</th>
+    <th>Last logged in</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.updated_at %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+
+

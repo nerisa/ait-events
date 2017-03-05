@@ -1,0 +1,119 @@
+<h1><strong>PS4 Solutions</strong></h1>
+
+<div class="answer-block">
+  <h3>User, Content and User-to-Content Map </h3>
+
+  <p>Our content database contains information about the committee, event_name, venue, date and time, volunteers,
+    participants, discussions.</p>
+
+  <h4>We have the following content in our application</h4>
+  <ul>
+    <li>A calendar view of all the events.</li>
+    <li>Different types of events.</li>
+    <li>Details about the events.</li>
+    <li>Information about the author of the events.</li>
+    <li>A list of all the volunteers for a particular event.</li>
+    <li>A discussion area for discussion about the events.</li>
+    <li>User generated information from the discussions.</li>
+    <li>Notifications based on user preferences.</li>
+  </ul>
+
+  <h4>The user-to-content map</h4>
+  <p>Normal users can see details about the author of an event - the SU Committee which created the event.</p>
+  <p> Whenever a user posts anything in the discussion page all the users in the discussion as well as the event author are notified.</p>
+  <p>The volunteers of a particular event are notified whenever a change occurs in the particular event.</p><br>
+</div>
+
+<div class="answer-block">
+  <h3>Avoiding SQL injection and XSS attacks</h3>
+
+  <p>One of the prevention methods for XSS is to make sure any user input is html escaped or sanitized before sending it
+    to a browser. This is done by the escapeHTML() (or its alias h()) method) in Rails. It replaces the HTML input
+    characters &, ", <, and > by their uninterpreted representations in HTML (&amp;, &quot;, &lt;, and &gt;). This happens
+    explicitly in Rails 3 and above so we do not need to remember to use the escapeHTML() method everywhere we render user
+    input. But if we do not want to escape the input, then we can use the ‘raw’ method.</p><br>
+
+  <p>On the other hand, if we want more control and we want the raw string so that users can add styles to their event
+    suggestions, Rails has a sanitize method that takes a whitelist approach to tags. If a tag was not in the array of
+    allowed tags, the tag is completely removed from the string before being delivered it to the browser.</p>
+
+  <p>To mount an SQL injection attack the attacker need to have information about the data schema.
+    One method for prevention of SQL injection is automatically implemented by ruby on rails which is a built in feature
+    which automatically escapes all special characters ( ‘ “ : ), null characters and also line breaks. Using
+    Model.find(id) or Model.find_by_some thing(something) automatically applies this countermeasure. But in SQL fragments,
+    especially in conditions fragments (where("...")), the connection.execute() or Model.find_by_sql() methods, it has to
+    be applied manually.</p><br>
+
+  <p>We can also pass arrays in order to sanitize tainted strings. The use of parameterized prepared statements also helpsprevent SQL injection.</p>
+</div>
+
+<div class="answer-block">
+  <h3>Auditing </h3>
+
+  <p>As we plan on using Google oauth for the authentication process by using the gem omniauth-google-oauth2, we do not
+    store any passwords. The users are redirected to the google oauth server, it then authenticates the user and redirects
+    them to the web application.</p>
+
+  <p>We have used the ‘Brakeman’ gem to detect any security vulnerabilities in our application. Brakeman has been setup in
+    the Jenkins Job as well so that every build will be checked for vulnerabilities.</p>
+</div>
+
+<div class="answer-block">
+  <h3>User data model</h3>
+  <%= image_tag("user_model.png") %>
+</div>
+
+<div class="answer-block">
+  <h3>Registration and Management page flow</h3>
+  <%= image_tag("login_flow.png") %>
+</div>
+
+<div class="answer-block">
+  <h3>Login and Admin Pages</h3>
+  <p>AIT Events is a event management page for AIT members. Thus only people with valid AIT email can login to our system. Since we donot have to store the user profile, we simply have 'Sign in using Google' for logging in the users. The admin also login using the AIT Email</p>
+  To access the admin pages please login using the google account: <span>mdailey@ait.asia</span>
+</div>
+
+<div class="answer-block">
+  <h3>Jenkins Integrations</h3>
+  <%= image_tag("jenkins.png",height:"500",width:'700') %>
+  <%= image_tag("jenkins2.png",height:"500",width:'700') %>
+</div>
+
+<div class="answer-block">
+  <h3>SSL Setup</h3>
+  <p>We have followed the steps given <a href="http://www.akadia.com/services/ssh_test_certificate.html">here</a> to setup SSL in our server</p>
+</div>
+
+<div class="answer-block">
+  <h3>Database Dump</h3>
+  <li>Find the database dump <a href="/pgdump.txt">here</a>.</li>
+</div>
+
+<style>
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .answer-block{
+    margin: 30px 0;
+    padding-bottom: 20px;
+  }
+
+  p{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .answer-block p, .answer-block {
+    font-size: 15px !important;
+  }
+
+  ul{
+    margin: 5px 10px;
+    font-size: 15px !important;
+  }
+</style>

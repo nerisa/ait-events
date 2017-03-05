@@ -1,0 +1,36 @@
+<%= form_for(@event) do |f| %>
+    <div class="form-group">
+      <%= f.label :name, 'Name of the event' %><br>
+      <%= f.text_field :name, {:class => "form-control", :required => true} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, 'Describe the event' %><br>
+      <%= f.text_area :description, {:class => "form-control", :required => true} %>
+    </div>
+    <% if current_user.is_super_admin? %>
+      <div class = "form-group">
+        <%= f.label :committee_id, 'Which SU committee would this event fall under?' %>
+        <%= f.collection_select :committee_id, Committee.all, :id, :name,{prompt: 'Please select a committee'}, {required: 'true', class: 'form-control'} %>
+      </div>
+    <% end %>
+    <div class="event-date clearfix">
+      <div class = "form-group start-date">
+        <%= f.label :start_date %>
+        <%= f.datetime_local_field :start_date, {:class => "form-control"} %>
+      </div>
+      <div class = "form-group end-date">
+        <%= f.label :end_date %>
+        <%= f.datetime_local_field :end_date, {:class => "form-control"} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :venue, 'Where do you plan to organize this event?' %><br>
+      <%= f.text_field :venue, {:class => "form-control"} %>
+    </div>
+    <%= f.submit 'Create',:class => 'btn btn-primary' %>
+    <% if current_user.is_master_admin? %>
+        <%= link_to "Discard", current_user.committee, class: 'btn btn-danger' %>
+    <% else %>
+        <%= link_to "Discard", events_path, class: 'btn btn-danger' %>
+    <% end %>
+<% end %>

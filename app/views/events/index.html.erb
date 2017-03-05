@@ -1,0 +1,26 @@
+<div class="col-md-12">
+  <div class="event-header clearfix">
+  <h1>Events in AIT</h1>
+  <% if !current_user.nil? %>
+      <% if current_user.is_super_admin? %>
+        <%= link_to "Create an Event", new_event_path, class: "btn btn-success" %>
+      <% end %>
+  <% end %>
+    </div>
+  <% Committee.all.each do |committee| %>
+    <div class="committee-events">
+      <%= link_to committee do %>
+        <h2><%= committee.name %></h2>
+      <% end %>
+      <% if !@events_by_committee[committee].nil? && !@events_by_committee[committee].empty? %>
+        <ul>
+          <% @events_by_committee[committee].each do |event| %>
+            <li><%= link_to event.name, event_path(event) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>This committee has not held any events yet.</p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

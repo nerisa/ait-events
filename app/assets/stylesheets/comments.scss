@@ -1,0 +1,71 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-name{
+  margin: 0;
+  color: #337AB7;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.comment-details, .comment-form {
+  border-bottom: #d7d7d7 solid 1px;
+  margin: 12px 0;
+  padding-bottom: 2px;
+}
+
+.comment-details p {
+  margin: 0;
+}
+
+.comments{
+  background: #F6F7F9;
+  padding: 5px 20px 10px;
+}
+
+.comment-time{
+  font-size: 12px;
+  color:#7C7C7C;
+}
+
+.event-details{
+  background: #FFFFFF;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.event-heading{
+  border-bottom: #d7d7d7 solid 1px;
+}
+
+.event-name{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.committee-name{
+  font-size: 12px;
+  font-weight: bold;
+  background: #E9EBEE;
+  display: inline-block;
+  padding: 0 2px;
+  border-radius: 2px;
+  float: right;
+}
+
+.idea-description{
+  border: 1px solid #d7d7d7;
+  padding: 10px 5px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.comment-form{
+  padding-bottom: 10px;
+}
+
+.idea-block {
+  background: #E9EBEE;
+  margin: 10px 0;
+}

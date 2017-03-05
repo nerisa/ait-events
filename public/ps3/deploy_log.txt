@@ -1,0 +1,205 @@
+nerisa@nerisa:~/codehome/project/git/web16-13/ait-events$ cap production deploy --trace
+** Invoke production (first_time)
+** Execute production
+** Invoke load:defaults (first_time)
+** Execute load:defaults
+** Invoke rbenv:validate (first_time)
+** Invoke rbenv:install (first_time)
+** Execute rbenv:install
+** Invoke rbenv:install_rbenv (first_time)
+** Execute rbenv:install_rbenv
+** Invoke rbenv:install_ruby_build (first_time)
+** Execute rbenv:install_ruby_build
+** Invoke rbenv:install_ruby (first_time)
+** Execute rbenv:install_ruby
+** Invoke rbenv:install_bundler (first_time)
+** Invoke rbenv:map_bins (first_time)
+** Invoke passenger:rbenv:hook (first_time)
+** Invoke passenger:test_which_passenger (first_time)
+** Execute passenger:test_which_passenger
+** Execute passenger:rbenv:hook
+** Execute rbenv:map_bins
+** Execute rbenv:install_bundler
+** Execute rbenv:validate
+** Invoke rbenv:map_bins 
+** Invoke bundler:map_bins (first_time)
+** Invoke passenger:bundler:hook (first_time)
+** Execute passenger:bundler:hook
+** Execute bundler:map_bins
+** Invoke deploy:set_rails_env (first_time)
+** Execute deploy:set_rails_env
+** Invoke deploy:set_linked_dirs (first_time)
+** Execute deploy:set_linked_dirs
+** Invoke deploy:set_rails_env 
+** Invoke deploy (first_time)
+** Execute deploy
+** Invoke deploy:starting (first_time)
+** Execute deploy:starting
+** Invoke deploy:check (first_time)
+** Execute deploy:check
+** Invoke git:check (first_time)
+** Invoke git:wrapper (first_time)
+** Execute git:wrapper
+00:00 git:wrapper
+      01 mkdir -p /tmp
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.051s
+      Uploading /tmp/git-ssh-ait-events-production-nerisa.sh 100.0%
+      02 chmod 700 /tmp/git-ssh-ait-events-production-nerisa.sh
+    ✔ 02 deploy@web13.cs.ait.ac.th 0.048s
+** Execute git:check
+00:00 git:check
+      01 git ls-remote --heads git@vgl-ait.org:web16-13.git
+      01 3f4469bec8938f94281bc0e635f5fca1688b3c20	refs/heads/master
+      01 736b32e67264398acc21d2e04fa27dbcca580193	refs/heads/ps1
+      01 4ab81f5feeed1a26c814ae734507b52c5b9a189b	refs/heads/ps2
+    ✔ 01 deploy@web13.cs.ait.ac.th 4.601s
+** Invoke deploy:check:directories (first_time)
+** Execute deploy:check:directories
+00:05 deploy:check:directories
+      01 mkdir -p /home/deploy/web16-13/ait-events/shared /home/deploy/web16-13/ait-events/releases
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.192s
+** Invoke deploy:check:linked_dirs (first_time)
+** Execute deploy:check:linked_dirs
+00:05 deploy:check:linked_dirs
+      01 mkdir -p /home/deploy/web16-13/ait-events/shared/public/assets
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.091s
+** Invoke deploy:check:make_linked_dirs (first_time)
+** Execute deploy:check:make_linked_dirs
+00:05 deploy:check:make_linked_dirs
+      01 mkdir -p /home/deploy/web16-13/ait-events/shared/config
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.055s
+** Invoke deploy:check:linked_files (first_time)
+** Execute deploy:check:linked_files
+** Invoke deploy:set_previous_revision (first_time)
+** Execute deploy:set_previous_revision
+** Invoke deploy:started (first_time)
+** Execute deploy:started
+** Invoke secrets_yml:secrets_yml_symlink (first_time)
+** Execute secrets_yml:secrets_yml_symlink
+** Invoke deploy:updating (first_time)
+** Invoke deploy:new_release_path (first_time)
+** Execute deploy:new_release_path
+** Execute deploy:updating
+** Invoke git:create_release (first_time)
+** Invoke git:update (first_time)
+** Invoke git:clone (first_time)
+** Invoke git:wrapper 
+** Execute git:clone
+00:06 git:clone
+      The repository mirror is at /home/deploy/web16-13/ait-events/repo
+** Execute git:update
+00:06 git:update
+      01 git remote update --prune
+      01 Fetching origin
+      01 From vgl-ait.org:web16-13
+      01    5cb3495..3f4469b  master     -> master
+    ✔ 01 deploy@web13.cs.ait.ac.th 5.620s
+** Execute git:create_release
+00:12 git:create_release
+      01 mkdir -p /home/deploy/web16-13/ait-events/releases/20161006041451
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.020s
+      02 git archive master ait-events | tar -x --strip-components 1 -f - -C /home/deploy/web16-13/ait-events/releases…
+    ✔ 02 deploy@web13.cs.ait.ac.th 0.116s
+** Invoke deploy:set_current_revision (first_time)
+** Execute deploy:set_current_revision
+** Invoke git:set_current_revision (first_time)
+** Execute git:set_current_revision
+00:12 git:set_current_revision
+      01 echo "3f4469bec8938f94281bc0e635f5fca1688b3c20" >> REVISION
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.193s
+** Invoke deploy:symlink:shared (first_time)
+** Execute deploy:symlink:shared
+** Invoke deploy:symlink:linked_files (first_time)
+** Execute deploy:symlink:linked_files
+00:12 deploy:symlink:linked_files
+      01 mkdir -p /home/deploy/web16-13/ait-events/releases/20161006041451/config
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.072s
+      02 rm /home/deploy/web16-13/ait-events/releases/20161006041451/config/database.yml
+    ✔ 02 deploy@web13.cs.ait.ac.th 0.047s
+      03 ln -s /home/deploy/web16-13/ait-events/shared/config/database.yml /home/deploy/web16-13/ait-events/releases/2…
+    ✔ 03 deploy@web13.cs.ait.ac.th 0.027s
+      04 rm /home/deploy/web16-13/ait-events/releases/20161006041451/config/secrets.yml
+    ✔ 04 deploy@web13.cs.ait.ac.th 0.033s
+      05 ln -s /home/deploy/web16-13/ait-events/shared/config/secrets.yml /home/deploy/web16-13/ait-events/releases/20…
+    ✔ 05 deploy@web13.cs.ait.ac.th 0.034s
+** Invoke deploy:symlink:linked_dirs (first_time)
+** Execute deploy:symlink:linked_dirs
+00:13 deploy:symlink:linked_dirs
+      01 mkdir -p /home/deploy/web16-13/ait-events/releases/20161006041451/public
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.064s
+      02 ln -s /home/deploy/web16-13/ait-events/shared/public/assets /home/deploy/web16-13/ait-events/releases/2016100…
+    ✔ 02 deploy@web13.cs.ait.ac.th 0.021s
+** Invoke deploy:updated (first_time)
+** Invoke bundler:install (first_time)
+** Execute bundler:install
+00:13 bundler:install
+      01 $HOME/.rbenv/bin/rbenv exec bundle install --path /home/deploy/web16-13/ait-events/shared/bundle --without de…
+    ✔ 01 deploy@web13.cs.ait.ac.th 8.728s
+** Execute deploy:updated
+** Invoke deploy:compile_assets (first_time)
+** Invoke deploy:set_rails_env 
+** Execute deploy:compile_assets
+** Invoke deploy:assets:precompile (first_time)
+** Execute deploy:assets:precompile
+00:22 deploy:assets:precompile
+      01 $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile
+    ✔ 01 deploy@web13.cs.ait.ac.th 13.257s
+** Invoke deploy:assets:backup_manifest (first_time)
+** Execute deploy:assets:backup_manifest
+00:35 deploy:assets:backup_manifest
+      01 mkdir -p /home/deploy/web16-13/ait-events/releases/20161006041451/assets_manifest_backup
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.016s
+      02 cp /home/deploy/web16-13/ait-events/releases/20161006041451/public/assets/.sprockets-manifest-4ea542f34cd2c93…
+    ✔ 02 deploy@web13.cs.ait.ac.th 0.025s
+** Invoke deploy:cleanup_assets (first_time)
+** Invoke deploy:set_rails_env 
+** Execute deploy:cleanup_assets
+** Invoke deploy:normalize_assets (first_time)
+** Invoke deploy:set_rails_env 
+** Execute deploy:normalize_assets
+** Invoke deploy:migrate (first_time)
+** Invoke deploy:set_rails_env 
+** Execute deploy:migrate
+00:35 deploy:migrate
+      [deploy:migrate] Run `rake db:migrate`
+** Invoke deploy:migrating (first_time)
+** Invoke deploy:set_rails_env 
+** Execute deploy:migrating
+00:35 deploy:migrating
+      01 $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate
+    ✔ 01 deploy@web13.cs.ait.ac.th 4.346s
+** Invoke deploy:publishing (first_time)
+** Execute deploy:publishing
+** Invoke deploy:symlink:release (first_time)
+** Execute deploy:symlink:release
+00:40 deploy:symlink:release
+      01 ln -s /home/deploy/web16-13/ait-events/releases/20161006041451 /home/deploy/web16-13/ait-events/releases/curr…
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.038s
+      02 mv /home/deploy/web16-13/ait-events/releases/current /home/deploy/web16-13/ait-events
+    ✔ 02 deploy@web13.cs.ait.ac.th 0.037s
+** Invoke deploy:restart (first_time)
+** Execute deploy:restart
+** Invoke passenger:restart (first_time)
+** Execute passenger:restart
+00:40 passenger:restart
+      01 mkdir -p /home/deploy/web16-13/ait-events/releases/20161006041451/tmp
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.042s
+      02 touch /home/deploy/web16-13/ait-events/releases/20161006041451/tmp/restart.txt
+    ✔ 02 deploy@web13.cs.ait.ac.th 0.366s
+** Invoke deploy:published (first_time)
+** Execute deploy:published
+** Invoke deploy:finishing (first_time)
+** Execute deploy:finishing
+** Invoke deploy:cleanup (first_time)
+** Execute deploy:cleanup
+00:40 deploy:cleanup
+      Keeping 5 of 6 deployed releases on web13.cs.ait.ac.th
+      01 rm -rf /home/deploy/web16-13/ait-events/releases/20160919100457
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.138s
+** Invoke deploy:finished (first_time)
+** Execute deploy:finished
+** Invoke deploy:log_revision (first_time)
+** Execute deploy:log_revision
+00:40 deploy:log_revision
+      01 echo "Branch master (at 3f4469bec8938f94281bc0e635f5fca1688b3c20) deployed as release 20161006041451 by neris…
+    ✔ 01 deploy@web13.cs.ait.ac.th 0.031s
